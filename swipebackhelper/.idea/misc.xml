@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EclipseCodeFormatter">
+    <option name="defaultSettings" value="true" />
+    <option name="formatter" value="ECLIPSE" />
+    <option name="id" value="1444186239798" />
+    <option name="name" value="default" />
+    <option name="pathToConfigFileJava" value="$PROJECT_DIR$/../../../opt/wxl.xml" />
+    <option name="selectedJavaProfile" value="wxl" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/Android-MaterialPreference" value="5761506852000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/Android-PickerView" value="5759471184000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/AndroidImageSlider" value="7197240820000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/AndroidSweetSheet" value="5756470456000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/AndroidSwipeLayout" value="7266798015000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/Blurry" value="10065918254000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/InstaMaterial" value="4321199268000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/KProgressHUD" value="5808251388000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/MPAndroidChart" value="7189808270000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/MVP-Dagger2-Retrofit" value="4333402809000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/MaterialEverywhere" value="4333376535000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/MaterialSettingsActivityDemo" value="4319895549000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/MaterialUp" value="4312069419000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/Meizhi" value="5761892046000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/PullScrollView" value="4317310014000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/SmartTabLayout" value="8628829644000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/StarWars.Android" value="5803345020000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/Timber" value="4333363826000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/VolleyPlus" value="5755706384000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/android-volley" value="2875241508000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/dialogplus" value="7202345325000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/google-music-mock" value="4313881188000" />
+        <entry key="$PROJECT_DIR$/../../../AndroidStudio/smooth-app-bar-layout" value="7222347535000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="J1aDong" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id>Class structureJava</id>
+          </State>
+          <State>
+            <id>Code maturity issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Javadoc issuesJava</id>
+          </State>
+          <State>
+            <id>Performance issuesJava</id>
+          </State>
+          <State>
+            <id>TestNG</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="true" assert-keyword="true" jdk-15="true">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

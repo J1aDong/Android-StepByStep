@@ -1,0 +1,38 @@
+
+{
+	"buildFiles" : [ "/Volumes/HDD/work/MyProjects/Android-StepByStep/app/CMakeLists.txt" ],
+	"cleanCommands" : 
+	[
+		"/Volumes/HDD/adt/android-sdk/cmake/3.6.3155560/bin/cmake --build /Volumes/HDD/work/MyProjects/Android-StepByStep/app/.externalNativeBuild/cmake/release/x86 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"native-lib-Release-x86" : 
+		{
+			"abi" : "x86",
+			"artifactName" : "native-lib",
+			"buildCommand" : "/Volumes/HDD/adt/android-sdk/cmake/3.6.3155560/bin/cmake --build /Volumes/HDD/work/MyProjects/Android-StepByStep/app/.externalNativeBuild/cmake/release/x86 --target native-lib",
+			"buildType" : "release",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  -target i686-none-linux-android -gcc-toolchain /Volumes/HDD/adt/android-sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/Volumes/HDD/adt/android-sdk/ndk-bundle/platforms/android-16/arch-x86  -Dnative_lib_EXPORTS -isystem /Volumes/HDD/adt/android-sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /Volumes/HDD/adt/android-sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include -isystem /Volumes/HDD/adt/android-sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti  -O2 -DNDEBUG -O2 -DNDEBUG  -fPIC    -c ",
+					"src" : "/Volumes/HDD/work/MyProjects/Android-StepByStep/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "/Volumes/HDD/work/MyProjects/Android-StepByStep/app/.externalNativeBuild/cmake/release/x86"
+				}
+			],
+			"output" : "/Volumes/HDD/work/MyProjects/Android-StepByStep/app/build/intermediates/cmake/release/obj/x86/libnative-lib.so",
+			"toolchain" : "11166451038666729404"
+		}
+	},
+	"toolchains" : 
+	{
+		"11166451038666729404" : 
+		{
+			"cCompilerExecutable" : "/Volumes/HDD/adt/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Volumes/HDD/adt/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}
