@@ -13,16 +13,11 @@ import butterknife.ButterKnife;
 public class TextureViewActivity extends BaseActivity
 {
 
-	@BindView(R.id.tv_simple)
-	SimpleTextureView mTvSimple;
-
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_textureview);
-		ButterKnife.bind(this);
-
 
 	}
 }

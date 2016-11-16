@@ -23,10 +23,27 @@ public class CircleChartView extends View
 	private Paint mInnerBackgroundPaint;
 	// 内圆的进度画笔
 	private Paint mInnerProgressPaint;
-	RectF mArcRectF = new RectF();
 
-	// 圆的线宽
-	private int mboderWidth = 40;
+	// 内圆
+	RectF mInnerArcRectF = new RectF();
+
+	// 外圆
+	RectF mOutArcRectF = new RectF();
+
+	// 外圆的进度画笔
+	private Paint mOutProgressPaint;
+
+	// 内圆距外线的距离
+	private int mInnerCircleDistance = 80;
+
+	// 内圆的线宽
+	private int mInnerCircleWidth = 40;
+
+	// 外圆距外线的距离
+	private int mOutCircleDistance = 20;
+
+	// 外圆的线宽
+	private int mOutCircleWidth = 30;
 
 	public CircleChartView(Context context)
 	{
@@ -48,17 +65,31 @@ public class CircleChartView extends View
 
 	private void init()
 	{
-		mInnerBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		if( null == mInnerBackgroundPaint )
+		{
+			mInnerBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		}
 		mInnerBackgroundPaint.setColor(getResources().getColor(R.color.gray));
 		mInnerBackgroundPaint.setStyle(Paint.Style.STROKE);
-		mInnerBackgroundPaint.setStrokeWidth(mboderWidth);
+		mInnerBackgroundPaint.setStrokeWidth(mInnerCircleWidth);
 
-		mInnerProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		if( null == mInnerProgressPaint )
+		{
+			mInnerProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		}
 		mInnerProgressPaint.setColor(getResources().getColor(R.color.red));
 		mInnerProgressPaint.setStyle(Paint.Style.STROKE);
-		mInnerProgressPaint.setStrokeWidth(mboderWidth);
+		mInnerProgressPaint.setStrokeWidth(mInnerCircleWidth);
 		mInnerProgressPaint.setStrokeCap(Paint.Cap.ROUND);
 
+		if( null == mOutProgressPaint )
+		{
+			mOutProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		}
+		mOutProgressPaint.setColor(getResources().getColor(R.color.deep_gray));
+		mOutProgressPaint.setStyle(Paint.Style.STROKE);
+		mOutProgressPaint.setStrokeWidth(mOutCircleWidth);
+		mOutProgressPaint.setStrokeCap(Paint.Cap.ROUND);
 	}
 
 	@Override
@@ -68,9 +99,11 @@ public class CircleChartView extends View
 
 		// 画背景内圆
 		canvas.drawCircle(mWidth / 2, mWidth / 2, mWidth / 2
-				- mboderWidth, mInnerBackgroundPaint);
-		// 画进度扇形
-		canvas.drawArc(mArcRectF, 270, 90, false, mInnerProgressPaint);
+				- mInnerCircleDistance, mInnerBackgroundPaint);
+		// 画内圆进度扇形
+		canvas.drawArc(mInnerArcRectF, 270, 90, false, mInnerProgressPaint);
+		// 画外圆进度扇形
+		canvas.drawArc(mOutArcRectF, 270, 60, false, mOutProgressPaint);
 	}
 
 	@Override
@@ -81,8 +114,11 @@ public class CircleChartView extends View
 		mWidth = getWidth();
 		mHeight = getHeight();
 
-		mArcRectF.set(mboderWidth, mboderWidth, mWidth - mboderWidth, mHeight
-				- mboderWidth);
+		mInnerArcRectF.set(mInnerCircleDistance, mInnerCircleDistance, mWidth
+				- mInnerCircleDistance, mHeight - mInnerCircleDistance);
+
+		mOutArcRectF.set(mOutCircleDistance, mOutCircleDistance, mWidth
+				- mOutCircleDistance, mHeight - mOutCircleDistance);
 	}
 
 }

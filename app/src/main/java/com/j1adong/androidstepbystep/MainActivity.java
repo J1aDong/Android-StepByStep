@@ -47,7 +47,8 @@ public class MainActivity extends BaseActivity
 				.setDisallowInterceptTouchEvent(true);
 
 		String[] strings =
-		{ "ShareElement(共享元素)", "正弦曲线图(TextureView)", "圆形图表", "4", "5", "6" };
+		{ "ShareElement(共享元素)", "正弦曲线图(TextureView)", "圆形图表",
+				"reductor(redux的安卓实现)的实例", "5", "6" };
 		List<String> list = Arrays.asList(strings);
 
 		MainBaseAdapter adapter = new MainBaseAdapter(MainActivity.this, R.layout.item_text, list);
@@ -105,6 +106,10 @@ public class MainActivity extends BaseActivity
 					case 2:
 						getContext()
 								.startActivity(new Intent(getContext(), CircleChartViewActivity.class));
+						break;
+					case 3:
+						getContext()
+								.startActivity(new Intent(getContext(), ReductorActivity.class));
 						break;
 					default:
 						break;
