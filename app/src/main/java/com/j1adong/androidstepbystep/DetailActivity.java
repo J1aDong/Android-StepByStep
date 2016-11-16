@@ -14,8 +14,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.j1adong.androidstepbystep.util.LolipopAnimationUtil;
+import com.j1adong.androidstepbystep.util.MyUtil;
 import com.j1adong.recyclerviewhelper.RvBaseAdapter;
 import com.j1adong.recyclerviewhelper.RvBaseAdapterHelper;
+import com.j1adong.recyclerviewhelper.RvDivider;
+import com.jude.swipbackhelper.SwipeBackHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,6 +54,9 @@ public class DetailActivity extends BaseActivity
 		setContentView(R.layout.activity_detail);
 		ButterKnife.bind(this);
 
+		SwipeBackHelper.getCurrentPage(this).setSwipeBackEnable(false)
+				.setDisallowInterceptTouchEvent(true);
+
 		int position = getIntent().getIntExtra(SHOW_POSITION, 0);
 
 		ViewCompat.setTransitionName(mIvImg, String.valueOf(position));
@@ -65,8 +71,11 @@ public class DetailActivity extends BaseActivity
 		SongsAdapter adapter = new SongsAdapter(this, R.layout.item_text, Arrays
 				.asList(Constants.ALBUM_SONGS));
 		mRvRecyclerview.setAdapter(adapter);
+		mRvRecyclerview.addItemDecoration(new RvDivider(RvDivider.VERTICAL));
 		mRvRecyclerview.setLayoutManager(new LinearLayoutManager(this));
 	}
+
+
 
 	class SongsAdapter extends RvBaseAdapter<String>
 	{
@@ -84,6 +93,7 @@ public class DetailActivity extends BaseActivity
 			textView.setText(item);
 
 			LolipopAnimationUtil.setRippleBackground(textView);
+			MyUtil.setFontFamily(textView);
 		}
 	}
 

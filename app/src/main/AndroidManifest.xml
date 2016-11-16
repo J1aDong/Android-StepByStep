@@ -25,6 +25,12 @@
         <activity
             android:name=".DetailActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".TextureViewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".CircleChartViewActivity" />
     </application>
 
 </manifest>

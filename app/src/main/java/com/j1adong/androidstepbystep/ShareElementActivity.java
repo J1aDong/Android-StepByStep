@@ -56,11 +56,11 @@ public class ShareElementActivity extends BaseActivity {
             ImageView imageView = help.getImageVeiw(R.id.main_card_album_image);
             Glide.with(getContext()).load(item).centerCrop().into(imageView);
 
-            // 把每个图片视图设置不同的Transition名称, 防止在一个视图内有多个相同的名称, 在变换的时候造成混乱
 
             help.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(ShareElementActivity.this, DetailActivity.class);
                 intent.putExtra(DetailActivity.SHOW_POSITION, position);
+                // 把每个图片视图设置不同的Transition名称, 防止在一个视图内有多个相同的名称, 在变换的时候造成混乱
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(ShareElementActivity.this, imageView, String.valueOf(position));
                 startActivity(intent, options.toBundle());
             });

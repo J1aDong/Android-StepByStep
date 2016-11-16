@@ -37,11 +37,115 @@ public abstract class RvBaseAdapter<T>
 	private static final int FOOTER_VIEW = 0x00000333;
 	private boolean mLoadingMoreEnable = false;
 	private OnLoadMoreListener mOnLoadMoreListener;
-	private int mLastAnimatedPosition = -1;
-	private boolean animationsLocked = false;
 	private int lastPosition = -1;
-	private long mStartTime = 0;
-	private int mOffsetPosition = 10;
+	// 是否开启item动画
+	private boolean mEnableAnimation = true;
+
+	// 第一个position动画时的时间
+	private long mStartTime = -1;
+
+	// 设置多少秒后动画失效
+	private float mOffsetSeconds = 0.3f;
+
+	/***************** public method *********************/
+
+	/**
+	 * 是否开启item列表动画，默认开启
+	 * 
+	 * @param enableAnimation
+	 */
+	public void setEnableAnimation(boolean enableAnimation)
+	{
+		this.mEnableAnimation = enableAnimation;
+	}
+
+	/**
+	 * 得到传入的List数组
+	 *
+	 * @return
+	 */
+	public List<T> getList()
+	{
+		return mList;
+	}
+
+	/**
+	 * 获得context
+	 *
+	 * @return
+	 */
+	public Context getContext()
+	{
+		return mContext;
+	}
+
+	/**
+	 * 设置加载更多的监听
+	 * 
+	 * @param mOnLoadMoreListener
+	 */
+	public void setOnLoadMoreListener(OnLoadMoreListener mOnLoadMoreListener)
+	{
+		mNextLoadEnable = true;
+		this.mOnLoadMoreListener = mOnLoadMoreListener;
+	}
+
+	/**
+	 * 添加FooterView
+	 *
+	 * @param view
+	 */
+	public void addFooterView(View view)
+	{
+		mNextLoadEnable = false;
+		if( null == view )
+		{
+			throw new RuntimeException("footer is null");
+		}
+		this.mFooterView = view;
+		this.notifyDataSetChanged();
+	}
+
+	/**
+	 * 获取数据的项数
+	 * 
+	 * @return
+	 */
+	@Override
+	public int getItemCount()
+	{
+		int i = mNextLoadEnable ? 1 : 0;
+		return mList.size() + i + getHeaderVeiwsCount() + getFooterViewsCount();
+	}
+
+	/**
+	 * 添加HeaderView
+	 *
+	 * @param view
+	 */
+	public void addHeaderView(View view)
+	{
+		if( null == view )
+		{
+			throw new RuntimeException("header is null");
+		}
+		this.mHeaderView = view;
+		this.notifyDataSetChanged();
+	}
+
+	/**
+	 * 设置加载状态
+	 * 
+	 * @param isNextLoad
+	 */
+	public void setNextLoad(boolean isNextLoad)
+	{
+		mNextLoadEnable = isNextLoad;
+		mLoadingMoreEnable = false;
+		notifyDataSetChanged();
+	}
+
+	/***************** public method *********************/
 
 	public RvBaseAdapter(Context context, int layoutResId, List<T> list)
 	{
@@ -76,46 +180,19 @@ public abstract class RvBaseAdapter<T>
 		}
 	}
 
-	/**
-	 * 得到传入的List数组
-	 *
-	 * @return
-	 */
-	public List<T> getList()
-	{
-		return mList;
-	}
-
-	/**
-	 * 获得context
-	 *
-	 * @return
-	 */
-	public Context getContext()
-	{
-		return mContext;
-	}
-
-	public void isNextLoad(boolean isNextLoad)
-	{
-		mNextLoadEnable = isNextLoad;
-		mLoadingMoreEnable = false;
-		notifyDataSetChanged();
-	}
-
-	public static class HeadViewHolder extends RvBaseAdapterHelper
+	private static class HeadViewHolder extends RvBaseAdapterHelper
 	{
 
-		public HeadViewHolder(View itemView)
+		HeadViewHolder(View itemView)
 		{
 			super(itemView);
 		}
 	}
 
-	public static class FooterViewHolder extends RvBaseAdapterHelper
+	private static class FooterViewHolder extends RvBaseAdapterHelper
 	{
 
-		public FooterViewHolder(View itemView)
+		FooterViewHolder(View itemView)
 		{
 			super(itemView);
 		}
@@ -145,7 +222,10 @@ public abstract class RvBaseAdapter<T>
 	@Override
 	public void onBindViewHolder(RvBaseAdapterHelper helper, int position)
 	{
-		setAnimation(helper.itemView, position);
+		if( mEnableAnimation )
+		{
+			setAnimation(helper.itemView, position);
+		}
 
 		if( helper instanceof ContentViewHolder )
 		{
@@ -182,8 +262,13 @@ public abstract class RvBaseAdapter<T>
 
 	private void setAnimation(View view, int position)
 	{
+		if( 0 == position && mStartTime == -1 )
+		{
+			mStartTime = System.currentTimeMillis();
+		}
 
-		if( position > mOffsetPosition )
+		// 1s后失效
+		if( System.currentTimeMillis() - mStartTime > mOffsetSeconds * 1000 )
 		{
 			return;
 		}
@@ -194,7 +279,7 @@ public abstract class RvBaseAdapter<T>
 		{
 			Animation animation = AnimationUtils
 					.loadAnimation(view.getContext(), R.anim.slide_in_bottom);
-			animation.setStartOffset(position * 20);
+			animation.setStartOffset(position * 50);
 			view.startAnimation(animation);
 			lastPosition = position;
 		}
@@ -211,12 +296,6 @@ public abstract class RvBaseAdapter<T>
 			int position)
 	{
 
-	}
-
-	public void setOnLoadMoreListener(OnLoadMoreListener mOnLoadMoreListener)
-	{
-		mNextLoadEnable = true;
-		this.mOnLoadMoreListener = mOnLoadMoreListener;
 	}
 
 	@Override
@@ -260,44 +339,6 @@ public abstract class RvBaseAdapter<T>
 	 */
 	protected abstract void convert(RvBaseAdapterHelper help, T item,
 			int position);
-
-	/**
-	 * 添加HeaderView
-	 *
-	 * @param view
-	 */
-	public void addHeaderView(View view)
-	{
-		if( null == view )
-		{
-			throw new RuntimeException("header is null");
-		}
-		this.mHeaderView = view;
-		this.notifyDataSetChanged();
-	}
-
-	/**
-	 * 添加FooterView
-	 *
-	 * @param view
-	 */
-	public void addFooterView(View view)
-	{
-		mNextLoadEnable = false;
-		if( null == view )
-		{
-			throw new RuntimeException("footer is null");
-		}
-		this.mFooterView = view;
-		this.notifyDataSetChanged();
-	}
-
-	@Override
-	public int getItemCount()
-	{
-		int i = mNextLoadEnable ? 1 : 0;
-		return mList.size() + i + getHeaderVeiwsCount() + getFooterViewsCount();
-	}
 
 	interface OnLoadMoreListener
 	{
